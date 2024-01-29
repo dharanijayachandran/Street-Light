@@ -1,0 +1,7 @@
+{
+    "alarmTimeInterval":30000,
+    "eventTimeInterval":30000,
+    "rackMonitorTimeInterval":180000,
+    "streetLightDashboardTimeInterval":60000
+
+}

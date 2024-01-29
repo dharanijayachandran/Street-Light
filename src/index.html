@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src *  data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * data: blob: 'unsafe-inline'; font-src * data: blob: 'unsafe-inline';">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Street Light</title>
+  <meta name="author" content="Dharani">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="importmap-type" content="systemjs-importmap">
+  <link rel="shortcut icon" type="image/png" href="/assets/street-light/img/logo/logo-favicon.png" sizes="16x7">
+  <style type="text/css">
+    /* css for sidebar menu expand and collaps  starts from  here */
+    div.content.show {
+      margin-left: 60px !important;
+    }
+  /* css for sidebar menu expand and collaps  ends  here */
+/* css for loader starts from here */
+    #loader {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform: -webkit-translate(-50%, -50%);
+      transform: -moz-translate(-50%, -50%);
+      transform: -ms-translate(-50%, -50%);
+      z-index: 999999;
+    }
+     @media screen and (max-width: 767px) {
+      .street-light-margin-top {
+        margin-top: 4.5rem;
+      }
+    }
+    /* css for loader ends  here */
+  </style>
+  <!-- loading theme information from assets folder -->
+  <script src="/assets/street-light/json/theme.js"></script>
+ <!-- <span>
+  <street-light-theam></street-light-theam>
+ </span> -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "layout":"http://10.225.10.23:8080/layout/main.js",
+        "street-light-login":"http://10.225.10.23:8080/street-light/street-light-login/main.js",
+        "street-light-login-hi":"http://10.225.10.23:8080/street-light/street-light-login/main.js",
+        "street-light-login-ar":"http://10.225.10.23:8080/street-light/street-light-login/main.js",
+        "user-management": "http://10.225.10.23:8080/user-management/en/main.js",
+        "user-management-hi": "http://10.225.10.23:8080/user-management/hi/main.js",
+        "user-management-ar": "http://10.225.10.23:8080/user-management/ar/main.js",
+        "master-data-management": "http://10.225.10.23:8080/master-data-management/en/main.js",
+        "master-data-management-hi": "http://10.225.10.23:8080/master-data-management/hi/main.js",
+        "master-data-management-ar": "http://10.225.10.23:8080/master-data-management/ar/main.js",
+        "protocol-management":"http://10.225.10.23:8080/protocol-management/en/main.js",
+        "protocol-management-hi":"http://10.225.10.23:8080/protocol-management/hi/main.js",
+        "protocol-management-ar":"http://10.225.10.23:8080/protocol-management/ar/main.js",
+        "gateway-management":"http://10.225.10.23:8080/gateway-management/en/main.js",
+        "gateway-management-hi":"http://10.225.10.23:8080/gateway-management/hi/main.js",
+        "gateway-management-ar":"http://10.225.10.23:8080/gateway-management/ar/main.js",
+        "alarm-management":"http://10.225.10.23:8080/alarm-management/en/main.js",
+        "alarm-management-hi":"http://10.225.10.23:8080/alarm-management/hi/main.js",
+        "alarm-management-ar":"http://10.225.10.23:8080/alarm-management/ar/main.js",
+        "data-simulator":"http://10.225.10.23:8080/data-simulator/en/main.js",
+        "data-simulator-hi":"http://10.225.10.23:8080/data-simulator/hi/main.js",
+        "data-simulator-ar":"http://10.225.10.23:8080/data-simulator/ar/main.js",
+        "device-data-writer":"http://10.225.10.23:8080/device-data-writer/en/main.js",
+        "device-data-writer-hi":"http://10.225.10.23:8080/device-data-writer/hi/main.js",
+        "device-data-writer-ar":"http://10.225.10.23:8080/device-data-writer/ar/main.js",
+        "asset-management":"http://10.225.10.23:8080/asset-management/en/main.js",
+        "asset-management-hi":"http://10.225.10.23:8080/asset-management/hi/main.js",
+        "asset-management-ar":"http://10.225.10.23:8080/asset-management/ar/main.js",
+        "analytic-management":"http://10.225.10.23:8080/analytic-management/en/main.js",
+        "analytic-management-hi":"http://10.225.10.23:8080/analytic-management/hi/main.js",
+        "analytic-management-ar":"http://10.225.10.23:8080/analytic-management/ar/main.js",
+        "logger-management":"http://10.225.10.23:8080/logger-management/en/main.js",
+        "logger-management-hi":"http://10.225.10.23:8080/logger-management/hi/main.js",
+        "logger-management-ar":"http://10.225.10.23:8080/logger-management/ar/main.js",
+        "geospatial-management":"http://10.225.10.23:8080/geospatial-management/en/main.js",
+        "geospatial-management-hi":"http://10.225.10.23:8080/geospatial-management/hi/main.js",
+        "geospatial-management-ar":"http://10.225.10.23:8080/geospatial-management/ar/main.js",
+        "street-light-analytic-management":"http://10.225.10.23:8080/street-light/street-light-analytic-management/en/main.js",
+        "street-light-analytic-management-hi":"http://10.225.10.23:8080/street-light/street-light-analytic-management/hi/main.js",
+        "street-light-analytic-management-ar":"http://10.225.10.23:8080/street-light/street-light-analytic-management/ar/main.js",
+        "street-light-asset":"http://10.225.10.23:8080/street-light/street-light-asset/en/main.js",
+        "street-light-map":"http://10.225.10.23:8080/street-light/street-light-map/en/main.js",
+        "single-spa": "/assets/js/single-spa.min.js",
+        "single-spa-layout": "/assets/js/single-spa-layout.min.js"
+      }
+
+    }
+
+  </script>
+  <link rel="preload" href="/assets/js/single-spa.min.js" as="script" crossorigin="anonymous" />
+  <script src='/assets/js/minified.js'></script>
+  <script src="/assets/js/zone.min.js"></script>
+  <script src="/assets/js/import-map-overrides.js"></script>
+  <script src="/assets/js/system.min.js"></script>
+  <script src="/assets/js/amd.min.js"></script>
+  <script src="/assets/js/named-exports.js"></script>
+  <script src="/assets/js/named-register.min.js"></script>
+
+  <template id="single-spa-layout">
+    <single-spa-router>
+      <single-spa-router>
+        <nav class="topnav">
+          <application name="layout"></application>
+        </nav>
+        <div class="main-content street-light-margin-top">
+          <route path="/street-light/en/#/sl-login">
+            <application name="street-light-login"></application>
+          </route>
+          <route path="/street-light/hi/#/sl-login">
+            <application name="street-light-login-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/sl-login">
+            <application name="street-light-login-ar"></application>
+          </route>
+          <route path="/street-light/en/#/config">
+            <application name="master-data-management"></application>
+          </route>
+          <route path="/street-light/hi/#/config">
+            <application name="master-data-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/config">
+            <application name="master-data-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/user-config">
+            <application name="user-management"></application>
+          </route>
+          <route path="/street-light/hi/#/user-config">
+            <application name="user-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/user-config">
+            <application name="user-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/protocol-config">
+            <application name="protocol-management"></application>
+          </route>
+          <route path="/street-light/hi/#/protocol-config">
+            <application name="protocol-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/protocol-config">
+            <application name="protocol-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/gateway-config">
+            <application name="gateway-management"></application>
+          </route>
+          <route path="/street-light/hi/#/gateway-config">
+            <application name="gateway-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/gateway-config">
+            <application name="gateway-management-ar"></application>
+          </route>
+          <route path="/street-light/ar/#/alarm">
+            <application name="alarm-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/alarm">
+            <application name="alarm-management"></application>
+          </route>
+          <route path="/street-light/hi/#/alarm">
+            <application name="alarm-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/dataSimulator">
+            <application name="data-simulator-ar"></application>
+          </route>
+          <route path="/street-light/en/#/dataSimulator">
+            <application name="data-simulator"></application>
+          </route>
+          <route path="/street-light/hi/#/dataSimulator">
+            <application name="data-simulator-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/deviceDataWriter">
+            <application name="device-data-writer-ar"></application>
+          </route>
+          <route path="/street-light/en/#/deviceDataWriter">
+            <application name="device-data-writer"></application>
+          </route>
+          <route path="/street-light/hi/#/deviceDataWriter">
+            <application name="device-data-writer-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/asset-config">
+            <application name="asset-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/asset-config">
+            <application name="asset-management"></application>
+          </route>
+          <route path="/street-light/hi/#/asset-config">
+            <application name="asset-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/analytic">
+            <application name="analytic-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/analytic">
+            <application name="analytic-management"></application>
+          </route>
+          <route path="/street-light/hi/#/analytic">
+            <application name="analytic-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/logger">
+            <application name="logger-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/logger">
+            <application name="logger-management"></application>
+          </route>
+          <route path="/street-light/hi/#/logger">
+            <application name="logger-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/geospatial">
+            <application name="geospatial-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/geospatial">
+            <application name="geospatial-management"></application>
+          </route>
+          <route path="/street-light/hi/#/geospatial">
+            <application name="geospatial-management-hi"></application>
+          </route>
+          <route path="/street-light/ar/#/dashboard">
+            <application name="street-light-analytic-management-ar"></application>
+          </route>
+          <route path="/street-light/en/#/dashboard">
+            <application name="street-light-analytic-management"></application>
+          </route>
+          <route path="/street-light/hi/#/dashboard">
+            <application name="street-light-analytic-management-hi"></application>
+          </route>
+          <route path="/street-light/en/#/assets">
+            <application name="street-light-asset"></application>
+          </route>
+          <route path="/street-light/en/#/map">
+            <application name="street-light-map"></application>
+          </route>
+                </div>
+    </single-spa-router>
+  </template>
+</head>
+
+<body>
+  <script>
+    Promise.all([System.import('single-spa'), System.import('single-spa-layout')]).then(([singleSpa, singleSpaLayout]) => {
+      const { constructApplications, constructLayoutEngine, constructRoutes } = singleSpaLayout;
+      const { registerApplication, start } = singleSpa;
+      const routes = constructRoutes(document.querySelector('#single-spa-layout'));
+      const applications = constructApplications({
+        routes,
+        loadApp({ name }) {
+        return Promise.resolve().then(() => {
+          placeLoader()
+          return System.import(name)
+        }).then(app => {
+          removeLoader()
+          return app;
+        })
+
+        },
+      });
+      function placeLoader() {
+        document.body.appendChild(
+          Object.assign(document.createElement('img'), {
+            id: 'loader',
+            src: "/assets/street-light/img/dashboard/ProgressLoader.gif",
+          })
+        )
+      }
+
+      function removeLoader(obj) {
+          document.getElementById('loader').remove()
+      }
+
+      const layoutEngine = constructLayoutEngine({ routes, applications });
+      applications.forEach(registerApplication);
+
+      start();
+    });
+  </script>
+  <!-- <import-map-overrides-full></import-map-overrides-full> -->
+  <script src="scripts.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+<!-- Author:Dharani-->
+</html>

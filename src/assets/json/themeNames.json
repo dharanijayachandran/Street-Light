@@ -1,0 +1,17 @@
+[ {
+    "id": 2,
+    "name": "empyreal",
+    "isSelected": false
+   },
+    
+    {
+        "id": 2,
+        "name": "Default",
+        "isSelected": true
+    },
+    {
+        "id": 3,
+        "name": "StreetLight",
+        "isSelected": false
+    }
+]
